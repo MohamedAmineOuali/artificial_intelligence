@@ -1,0 +1,16 @@
+mange_viande alors carnivore
+dents_pointues et griffes et yeux_avant alors carnivore
+mange_herbe alors non carnivore
+mammifere et sabots alors ongule
+mammifere et rumine alors ongule
+mammifere et carnivore et brun et taches alors guepard
+mammifere et carnivore et brun et raies alors tigre
+ongule et long_cou et longues_pattes et taches alors girafe
+ongule et raies alors zebre
+oiseau et long_cou et longues_pattes et noir__blanc et non vole alors autruche
+oiseau et nage et noir__blanc et non vole alors pingouin
+oiseau et vole alors albatros
+poils alors mammifere
+lait alors mammifere
+plumes alors oiseau
+vole et pond_oeufs alors oiseau
