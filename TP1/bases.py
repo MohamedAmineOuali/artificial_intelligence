@@ -2,7 +2,7 @@ from fait import Fait
 from rule import Rule
 
 
-
+# ToDO change the id of regle to a key on a map
 class BaseRegle:
 
     def __init__(self,filename):
