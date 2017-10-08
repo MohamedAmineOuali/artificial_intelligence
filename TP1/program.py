@@ -1,3 +1,4 @@
+# coding=utf-8
 from fait import Fait
 from rule import Rule
 
