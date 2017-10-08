@@ -20,7 +20,6 @@ class Rule:
     def retrieve_rules_from_file(BC_number):
         rules=[]
         file_name='BC'+BC_number+'\\regles.txt'
-        new_file=open("tmp.txt","w+")
         with open(file_name ,'r') as file:
             for line in file:
                 #delete any unecessary white space
