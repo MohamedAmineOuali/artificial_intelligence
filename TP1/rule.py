@@ -12,3 +12,6 @@ class Rule:
         return True
 
 
+    def __repr__(self):
+        return "R"+self.id+": Si "+str(self.premisses)+" alors "+str(self.conclusions)
+
