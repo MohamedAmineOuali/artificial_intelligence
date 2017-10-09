@@ -55,4 +55,4 @@ save=int(input('voulez vous enregistrer la trace d\'execution:\n'
                  '2 : no \n'))
 if(save==1):
     filename=input("entrer le nom du fichier")
-    trace(activated_rules_order, open(filename,'w'))
+    trace(BR,activated_rules_order, open(filename,'w'))
