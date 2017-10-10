@@ -1,6 +1,8 @@
 from fait import Fait
 from rule import Rule
 
+color_schema='\x1b[%sm %s \x1b[0m'
+
 
 # ToDO change the id of regle to a key on a map
 class BaseRegle:
@@ -23,7 +25,7 @@ class BaseRegle:
         self.rules.sort(key=lambda x: int(x.id))
 
     def print_regles(self):
-        print("voici la liste des regles: ")
+        print(color_schema%('4;94;15',"voici la liste des regles: "))
         with open(self.filename) as file:
             for line in file:
                 print(' '.join(line.replace('\n', "").split()))
@@ -55,6 +57,6 @@ class BaseFait:
         print("voici la liste des faits: ",self.facts)
 
     def print_all(self):
-        print("voici les base de fais trouver")
+        print(color_schema%('4;94;15',"voici les base de fais trouver"))
         for i,facts in enumerate(self.factsBase):
             print(i+1,": ",facts)
