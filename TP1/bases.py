@@ -57,6 +57,6 @@ class BaseFait:
         print("voici la liste des faits: ",self.facts)
 
     def print_all(self):
-        print(color_schema%('4;94;15',"voici les base de fais trouver"))
+        print(color_schema%('4;94;15',"voici les base des faits trouvées"))
         for i,facts in enumerate(self.factsBase):
             print(i+1,": ",facts)
