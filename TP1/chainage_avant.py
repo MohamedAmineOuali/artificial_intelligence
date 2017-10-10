@@ -1,6 +1,6 @@
 from fait import Fait
 from bases import BaseFait,BaseRegle
-
+color_schema='\x1b[%sm %s \x1b[0m'
 
 def chainage_avant(BR:BaseRegle,BF:BaseFait,conflict,goal):
 
@@ -41,7 +41,7 @@ def trace(BR:BaseRegle,activated_rules_order,file):
     rules={rule.id:rule for rule in BR.rules}
     for it in activated_rules_order:
         if(it[0]==None):
-            print("base de fait initial :",it[1],file=file)
+            print(color_schema%('' ,"base de fait initial :"),it[1],file=file)
         else:
-            print("la regle declenchée est :", rules[it[0]],file=file)
-            print("la nouvelle base de fait :",it[1],file=file)
+            print(color_schema%('' ,"la regle declenchée est :"), rules[it[0]],file=file)
+            print(color_schema%('' ,"la nouvelle base de fait :"),it[1],file=file)
