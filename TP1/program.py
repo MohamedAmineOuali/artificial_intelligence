@@ -50,7 +50,7 @@ BF,activated_rules_order=chainage_avant(BR,BF,conflict,goal)
 if goal in BF:
     print(color_schema%('0;92;1' ,"but trouvé"))
 else:
-    print(color_schema % ('0;91;1', "but trouvé"))
+    print(color_schema % ('0;91;1', "but non trouvé"))
 
 
 trace(BR,activated_rules_order,sys.stdout)
