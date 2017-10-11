@@ -9,7 +9,7 @@ def first_rule(rules,facts):
 def rule_with_more_premisses(rules,faits):
     select=None
     for rule in rules:
-        if(not(rule.etat) and rule.isSelectable(faits)):
+        if(not(rule.state) and rule.isSelectable(faits)):
             if(select==None or len(select.premisses)<len(rule.premisses)):
                 select=rule
     return select
