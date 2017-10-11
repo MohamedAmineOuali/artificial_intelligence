@@ -1,2 +1,3 @@
 BF1 : plumes,non(vole),nage,noir_et_blanc, mange_herbe
 BF2 : brun,dents_pointues,griffes
+BF3 : mammifere, carnivore, brun, raies, rumine

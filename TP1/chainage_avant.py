@@ -9,6 +9,10 @@ def chainage_avant(BR:BaseRegle,BF:BaseFait,conflict,goal):
     if (goal!='' and goal in BF):
         return BF,activated_rules_order
 
+    #in non goal in BF
+    if(Fait.non_fait(goal) in BF):
+        print('goal n\'est pas démontrable' )
+        return BF,activated_rules_order
 
     rule = conflict(BR.rules, BF.facts)
 
@@ -22,6 +26,12 @@ def chainage_avant(BR:BaseRegle,BF:BaseFait,conflict,goal):
         for conclusion in rule.conclusions:
             if (conclusion not in BF):
                 BF.facts.append(Fait(conclusion, rule.id))
+
+                # in non goal in BF
+                if (Fait.non_fait(conclusion) in BF):
+                    print('erreur fait et non fait dans la meme base')
+                    return BF, activated_rules_order
+
             else:
                 a=0
 
@@ -30,6 +40,11 @@ def chainage_avant(BR:BaseRegle,BF:BaseFait,conflict,goal):
 
         if goal!='' and goal in BF:
             return BF,activated_rules_order
+
+         # in non goal in BF
+        if (Fait.non_fait(goal) in BF):
+             print('goal n\'est pas démontrable')
+             return BF, activated_rules_order
 
         # search for the next rule to activate
         rule = conflict(BR.rules, BF.facts)

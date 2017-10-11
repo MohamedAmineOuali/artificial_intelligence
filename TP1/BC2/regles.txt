@@ -4,12 +4,12 @@ r3 : Si phanerogame et 1cotylédone Alors monocotylédone
 r4 : Si phanerogame et 2cotylédone Alors dicotylédone
 r5 : Si monocotylédone et rhizome Alors muguet
 r6 : Si dicotylédone Alors anémone
-r15 : Si joli Alors non rhizome
-r7 : Si monocotylédone et non rhizome Alors lilas
-r8 : Si feuille et non fleur Alors cryptogame
-r9 : Si cryptogame et non racine Alors mousse
+r15 : Si joli Alors non(rhizome)
+r7 : Si monocotylédone et non(rhizome) Alors lilas
+r8 : Si feuille et non(fleur) Alors cryptogame
+r9 : Si cryptogame et non(racine) Alors mousse
 r10 : Si cryptogame et racine Alors fougère
-r11 : Si non feuille et plante Alors thallophyte
+r11 : Si non(feuille) et plante Alors thallophyte
 r12 : Si thallophyte et chlorophylle Alors algue
-r13 : Si thallophyte et non chlorophylle Alors champignon et non comestible
-r14 : Si non feuille et non fleur et non plante Alors colibacille
+r13 : Si thallophyte et non(chlorophylle) Alors champignon et non(comestible)
+r14 : Si non(feuille) et non(fleur) et non(plante) Alors colibacille

@@ -1,2 +1,4 @@
 BF1 : fleur, graine ,2cotylédone
 BF2 : fleur, graine
+BF3 : rhizome, fleur, 1cotylédone, graine
+BF4 : rhizome, joli

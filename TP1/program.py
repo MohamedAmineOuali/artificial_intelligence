@@ -56,7 +56,7 @@ else:
 trace(BR,activated_rules_order,sys.stdout)
 
 save=int(input(color_schema%('0;94;1' ,'voulez vous enregistrer la trace d\'execution:\n'
-                 '1 : yes'
+                 '1 : yes\n'
                  '2 : no \n')))
 if(save==1):
     filename=input(color_schema%('0;94;1' ,"entrer le nom du fichier"))
