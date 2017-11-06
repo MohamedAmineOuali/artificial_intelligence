@@ -20,6 +20,7 @@ class Expression(list):
 
 
 
+
     def __contains__(self,expr2):
         #epr3 = expr2.split(()[1].split(])[0]
         return self.expression in expr2.split(',')
