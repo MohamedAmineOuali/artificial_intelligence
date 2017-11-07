@@ -22,9 +22,8 @@ class Display:
 
     def mgu(self, exp1, exp2):
         d = unifier(exp1, exp2)
-
-        if d is None:
-            print("Pas d'unificateur pour ces deux expressions!", '\n')
+        if d is None or len(d)==0:
+            print("Unification impossible!", '\n')
             return
 
         for key, value in d.items():
