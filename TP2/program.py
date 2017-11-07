@@ -23,7 +23,7 @@ class Display:
     def mgu(self, exp1, exp2):
         d = unifier(exp1, exp2)
         if d is None or len(d)==0:
-            print("Unification impossible!", '\n')
+            print('\x1b[6;31;20m'+"Unification impossible!"+'\x1b[0m', '\n')
             return
 
         for key, value in d.items():
@@ -45,8 +45,8 @@ class Display:
 
 
 
-expr1=input("Type the first expression")
-expr2=input("Type the second expression")
+expr1=input('\x1b[26;36;20m' + 'Type the first expression : ' + '\x1b[0m')
+expr2=input('\x1b[26;34;20m' + "Type the second expression : " + '\x1b[0m')
 
 e1=Expression(expr1)
 e2=Expression(expr2)
