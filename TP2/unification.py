@@ -41,7 +41,7 @@ def unifier(terms1:Expression,terms2:Expression):
 
     if(Z2==None):
         return None
-    Z1.update(Z2)
-    return Z1
+    Z2.update(Z1)
+    return Z2
 
 

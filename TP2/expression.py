@@ -1,8 +1,23 @@
 import ast
-class Expression(list):
+import re
+class Expression:
+    regex = re.compile(r'(^|,)(\w+)\(')
+    reg = re.compile(r'(\(|,|\))')
+    def __init__(self,chain):
+        if(isinstance(chain,list)):
+            self.expression=chain
+            return
+        chain=chain.replace(" ", "")
+        tmp = self.regex.sub(r'\1(\2,', chain)
+        while(tmp!=chain):
+            chain=tmp
+            tmp = self.regex.sub(r'\1(\2,', chain)
 
-    def __init__(self,expr):
-        self.expression=expr
+        if (chain[0] != '('):
+            chain = '(' + chain + ')'
+        chain = self.reg.sub(r'"\1"', chain)
+        chain=chain.replace('""','"').replace('(','[').replace(')',']').replace(']"',']').replace('"[','[')
+        self.expression = ast.literal_eval(chain)
 
     def isAtom(self):
         return (len(self.expression)<=1)
@@ -16,6 +31,8 @@ class Expression(list):
         else:
             first = [self.expression[0]]
         queue=self.expression[1:]
+        if(len(queue)==1 and isinstance(queue[0],list)):
+            queue=queue[0]
         return Expression(first),Expression(queue)
 
     def __contains__(self, expr):
@@ -29,6 +46,8 @@ class Expression(list):
     def substitute(self,subs:dict):
         tmp = self.expression.__str__()
         for v, sub in subs.items():
-            v = '\"' + v + "\""
+            v = "'" + v + "'"
+            sub="'"+sub+"'"
             tmp=tmp.replace(v , sub)
+        tmp=tmp.replace('\'[','[').replace(']\'',']')
         self.expression = ast.literal_eval(tmp)
