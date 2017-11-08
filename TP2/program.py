@@ -1,6 +1,6 @@
-from test_unifier import TestUnifier
 from unification import *
-from expression import Expression
+from unification import *
+
 
 class Display:
 
@@ -22,6 +22,7 @@ class Display:
 
     def mgu(self, exp1, exp2):
         d = unifier(exp1, exp2)
+        print(d)
         if d is None or len(d)==0:
             print('\x1b[6;31;20m'+"Unification impossible!"+'\x1b[0m', '\n')
             return

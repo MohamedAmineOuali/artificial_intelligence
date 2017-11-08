@@ -8,10 +8,10 @@ class Expression:
             self.expression=chain
             return
         chain=chain.replace(" ", "")
-        tmp = self.regex.sub(r'\1(\2,', chain)
+        tmp = self.regex.sub(r'\1(#\2,', chain)
         while(tmp!=chain):
             chain=tmp
-            tmp = self.regex.sub(r'\1(\2,', chain)
+            tmp = self.regex.sub(r'\1(#\2,', chain)
 
         if (chain[0] != '('):
             chain = '(' + chain + ')'
@@ -24,6 +24,12 @@ class Expression:
 
     def isVariable(self):
         return len(self.expression)==1 and '?' in self.expression[0]
+
+    def isFunction(self):
+        a=self.expression[0]
+        if(isinstance(a,str) and a[0]=='#'):
+            return True
+        return False
 
     def separate(self):
         if(isinstance(self.expression[0],list)):
@@ -43,11 +49,11 @@ class Expression:
         return  len(self.expression) == 1 and len(expr.expression)==1 and self.expression[0]==expr.expression[0]
 
 
-    def substitute(self,subs:dict):
+    def substitute(self,subs:list):
         tmp = self.expression.__str__()
-        for v, sub in subs.items():
-            v = "'" + v + "'"
-            sub="'"+sub+"'"
-            tmp=tmp.replace(v , sub)
+        for sub in subs:
+            v = "'" + sub[0] + "'"
+            s="'"+sub[1]+"'"
+            tmp=tmp.replace(v, s)
         tmp=tmp.replace('\'[','[').replace(']\'',']')
         self.expression = ast.literal_eval(tmp)

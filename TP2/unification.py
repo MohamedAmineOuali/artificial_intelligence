@@ -15,8 +15,9 @@ def unifier_atom(expr1:Expression,expr2:Expression):
         if(expr1 in expr2):
             return None
         if (expr2.isAtom()):
-           return {expr1.expression[0]:expr2.expression[0]}
-        return {expr1.expression[0]:expr2.expression.__str__()}
+           return [[expr1.expression[0],expr2.expression[0]]]
+        if(expr2.isFunction()):
+            return [[expr1.expression[0],expr2.expression.__str__()]]
 
     return None
 
@@ -41,7 +42,7 @@ def unifier(terms1:Expression,terms2:Expression):
 
     if(Z2==None):
         return None
-    Z2.update(Z1)
+    Z2+=Z1
     return Z2
 
 
