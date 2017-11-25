@@ -1,4 +1,4 @@
-
+from fileinput import filename
 
 import graphviz
 
@@ -122,11 +122,12 @@ class IGraph:
 
 
 class Graph(IGraph):
-    def __init__(self, *args, **kwargs):
+    def __init__(self, display,*args, **kwargs):
         super().__init__(*args, **kwargs)
 
         # create an empty graph
-        self.g = graphviz.Digraph()
+        self.display_image = display
+        self.g = graphviz.Digraph(filename="test",format="png")
 
         for v in self.nodes:
             self.g.node(v)
@@ -138,11 +139,23 @@ class Graph(IGraph):
         for node in self.nodes:
             self.g.node(node, label=node+' h*=('+str(self.get_heuristic(node,goal))+')')
 
-    def display(self, fringe=[],cur=None,explored=[]):
+    def display(self, fringe=[],cur=None,explored=[],start=None,goal=None):
         for vertex in fringe:
             self.g.node(vertex[-1], color='lightblue2', style='filled')
         for vertex in explored:
             self.g.node(vertex, color='red', style='filled')
         if cur!=None:
             self.g.node(cur, color='blue', style='filled')
-        self.g.view()
+        if start!=None:
+            self.g.node(start, color='pink', style='filled')
+        if goal!=None:
+            self.g.node(cur, color='green', style='filled')
+        self.g.render(filename="test")
+        self.display_image("test.png")
+
+
+    def init(self):
+        for vertex in self.nodes:
+            self.g.node(vertex, color='', style='')
+
+

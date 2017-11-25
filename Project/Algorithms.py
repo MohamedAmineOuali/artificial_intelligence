@@ -4,6 +4,7 @@ def bfs(graph, start, goal):
     queue = [[start]]
     visited = set()
     while len(queue) > 0:
+        yield 1
         cur = queue[0]
         last = cur[-1]
         graph.display(queue, last, visited)
@@ -20,6 +21,7 @@ def dfs(graph, start, goal):
     stack = [[start]]
     visited = set()
     while (len(stack) > 0):
+        yield 1
         cur = stack.pop()
         last = cur[-1]
         graph.display(stack, last, visited)
@@ -36,6 +38,7 @@ def uniform_cost(graph, start, goal):
     heappush(heap, (0, [start], start))
     visited = set()
     while heap:
+        yield 1
         cur = heappop(heap)
         last = cur[1][-1]
         graph.display(heap, last, visited)
@@ -53,6 +56,7 @@ def a_star(graph, start, goal):
     heappush(heap, (graph.get_heuristic(start, goal), [start], start))
     visited = set()
     while heap:
+        yield 1
         cur = heappop(heap)
         last = cur[1][-1]
         graph.display(heap, last, visited)
