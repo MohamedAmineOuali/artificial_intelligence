@@ -1,5 +1,6 @@
 from heapq import heappush, heappop
 
+
 def bfs(graph, start, goal):
     queue = [[start]]
     visited = set()
@@ -8,19 +9,20 @@ def bfs(graph, start, goal):
         cur = queue[0]
         last = cur[-1]
         graph.display(queue, last, visited)
-        if (last == goal):
+        if last == goal:
             return cur
         queue.pop(0)
         for a in graph.get_connected_nodes(last):
-            if (a not in cur):
+            if a not in cur:
                 queue.append(cur + [a])
         visited.add(last)
     return []
 
+
 def dfs(graph, start, goal):
     stack = [[start]]
     visited = set()
-    while (len(stack) > 0):
+    while len(stack) > 0:
         yield 1
         cur = stack.pop()
         last = cur[-1]
@@ -64,13 +66,35 @@ def a_star(graph, start, goal):
             return cur[1]
         visited.add(last)
         for a in graph.get_connected_nodes(last):
-            if (a not in visited):
+            if a not in visited:
                 heappush(heap,
                          (cur[0] + graph.get_edge(last, a).length + graph.get_heuristic(a, goal), cur[1] + [a], a))
     return []
 
-
-
+def iterative_deepening(graph, start, goal):
+    level=0
+    while 1:
+        level+=1
+        stack = [(1,[start],start)]
+        visited = set()
+        isNextLevel=False
+        while stack:
+            yield 1
+            cur = stack.pop()
+            last = cur[1][-1]
+            graph.display(stack, last, visited)
+            if last == goal:
+                return cur
+            if cur[0]<level:
+                for a in graph.get_connected_nodes(last):
+                    if a not in visited:
+                        stack.append((cur[0]+1,cur[1] + [a],a))
+            else:
+                isNextLevel=True
+            visited.add(last)
+        if not (isNextLevel):
+            break
+    return []
 
 
 # def is_admissible(graph, goal):

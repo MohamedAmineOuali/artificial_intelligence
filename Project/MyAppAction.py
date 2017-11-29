@@ -2,8 +2,6 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
-from PIL import Image
-from PIL.ImageQt import ImageQt
 import Algorithms
 import time
 import threading
@@ -43,8 +41,8 @@ class MyThread(threading.Thread):
 
 
 class MyAppAction:
-    algo = ["DFS", "BFS", "uniform cost", "Astar"]
-    algorithms=[Algorithms.dfs,Algorithms.bfs,Algorithms.uniform_cost,Algorithms.a_star]
+    algo = ["DFS", "BFS","iterative_deepening" ,"uniform cost", "Astar"]
+    algorithms=[Algorithms.dfs,Algorithms.bfs,Algorithms.iterative_deepening,Algorithms.uniform_cost,Algorithms.a_star]
     def __init__(self, algoSelect:QComboBox, delaySelect:QtWidgets.QDoubleSpinBox, startSelect:QComboBox, endSelect:QComboBox, textarea, playbt:QToolButton, stopbt:QToolButton, pausebt:QToolButton,
                  view, saveBt:QAction):
         self.algoSelect = algoSelect

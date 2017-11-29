@@ -140,6 +140,7 @@ class Graph(IGraph):
             self.g.node(node, label=node+' h*=('+str(self.get_heuristic(node,goal))+')')
 
     def display(self, fringe=[],cur=None,explored=[],start=None,goal=None):
+        self.init()
         for vertex in fringe:
             self.g.node(vertex[-1], color='lightblue2', style='filled')
         for vertex in explored:

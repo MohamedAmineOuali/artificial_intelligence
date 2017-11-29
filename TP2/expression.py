@@ -2,7 +2,7 @@ import ast
 import re
 class Expression:
     regex = re.compile(r'(^|,)(\w+)\(')
-    reg = re.compile(r'(\(|,|\))')
+    reg = re.compile(r'([(,)])')
     def __init__(self,chain):
         if(isinstance(chain,list)):
             self.expression=chain
