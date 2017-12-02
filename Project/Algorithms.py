@@ -18,7 +18,6 @@ def bfs(graph, start, goal):
         visited.add(last)
     return []
 
-
 def dfs(graph, start, goal):
     stack = [[start]]
     visited = set()

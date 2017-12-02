@@ -1,0 +1,40 @@
+<graph>
+    <edgesdict>
+        <edge name="e1" val="5" node1="1" node2="2"/>
+        <edge name="e2" val="15" node1="3" node2="4"/>
+        <edge name="e3" val="7" node1="5" node2="4"/>
+        <edge name="e4" val="25" node1="6" node2="9"/>
+        <edge name="e5" val="5" node1="8" node2="10"/>
+        <edge name="e6" val="3" node1="11" node2="13"/>
+        <edge name="e7" val="1" node1="7" node2="3"/>
+        <edge name="e8" val="4" node1="14" node2="6"/>
+        <edge name="e9" val="2" node1="2" node2="7"/>
+        <edge name="e10" val="9" node1="13" node2="2"/>
+        <edge name="e11" val="6" node1="3" node2="6"/>
+        <edge name="e12" val="4" node1="8" node2="2"/>
+        <edge name="e13" val="10" node1="5" node2="3"/>
+        <edge name="e14" val="5" node1="10" node2="2"/>
+        <edge name="e15" val="8" node1="2" node2="11"/>
+        <edge name="e16" val="3" node1="3" node2="2"/>
+        <edge name="e17" val="8" node1="12" node2="1"/>
+    </edgesdict>
+    <heuristic>
+        <params>
+            <endPoint node="14"></endPoint>
+            <param node="4" value="17"></param>
+            <param node="5" value="10"></param>
+            <param node="3" value="7"></param>
+            <param node="6" value="13"></param>
+            <param node="14" value="15"></param>
+            <param node="9" value="14"></param>
+            <param node="8" value="8"></param>
+            <param node="10" value="6"></param>
+            <param node="2" value="4"></param>
+            <param node="7" value="6"></param>
+            <param node="1" value="0"></param>
+            <param node="13" value="12"></param>
+            <param node="11" value="1000"></param>
+            <param node="12" value="6"></param>
+        </params>
+    </heuristic>
+</graph>

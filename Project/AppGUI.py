@@ -105,7 +105,8 @@ class Ui_MainWindow(object):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def getfile(self):
-        fname = QFileDialog.getOpenFileName(self.widget, 'Open file','', "Text files (*.txt)")
+        fname = QFileDialog.getOpenFileName(self.widget, 'Open file','', "Text files (*.txt);;XML files (*.xml)")
+        print('fname',fname)
         self.myAction.createGraph(fname)
 
     def retranslateUi(self, MainWindow):
@@ -116,7 +117,7 @@ class Ui_MainWindow(object):
         self.label_3.setText(_translate("MainWindow", "Start Node:"))
         self.label_4.setText(_translate("MainWindow", "End Node:  "))
         self.stopbt.setText(_translate("MainWindow", "stop"))
-        self.playbt.setText(_translate("MainWindow", "paly"))
+        self.playbt.setText(_translate("MainWindow", "play"))
         self.pausebt.setText(_translate("MainWindow", "pause"))
         self.menuFiles.setTitle(_translate("MainWindow", "Fi&le"))
         self.about.setTitle(_translate("MainWindow", "Abo&ut"))
