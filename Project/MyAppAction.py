@@ -50,9 +50,10 @@ class MyThread(QThread):
 
 
 class MyAppAction:
-    algo = ["DFS", "BFS", "iterative_deepening", "uniform cost","best_first", "Astar"]
+    algo = ["DFS", "BFS", "iterative_deepening", "uniform cost","best_first", "Astar","iterative_a_star"]
     algorithms = [Algorithms.dfs, Algorithms.bfs, Algorithms.iterative_deepening,
-                  Algorithms.uniform_cost, Algorithms.best_first, Algorithms.a_star]
+                  Algorithms.uniform_cost, Algorithms.best_first, Algorithms.a_star,
+                  Algorithms.iterative_a_star]
 
     '''
     define the selction of the algos, delay, start and finish node

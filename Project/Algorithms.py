@@ -126,6 +126,36 @@ def best_first(graph, start, goal):
                          (graph.get_heuristic(a, goal), cur[1] + [a], a))
     return ([],path,0)
 
+def iterative_a_star(graph, start, goal):
+    graph.diplay_heuristique(goal)
+    level=0
+    path=[]
+    while 1:
+        level+=1
+        heap = []
+        heappush(heap, (graph.get_heuristic(start, goal), [start], start))
+        visited = set()
+        isNextLevel=False
+        while heap:
+            yield 1
+            cur = heappop(heap)
+            last = cur[1][-1]
+            graph.display(heap, last, visited)
+            path.append(last)
+            if (last == goal):
+                return (cur[1], path, path_length(graph, cur[1]))
+            if len(cur[1])<level:
+                for a in graph.get_connected_nodes(last):
+                    if a not in visited:
+                        heappush(heap,
+                                 (cur[0] + graph.get_edge(last, a).length + graph.get_heuristic(a, goal), cur[1] + [a],a))
+            else:
+                isNextLevel=True
+            visited.add(last)
+        if not (isNextLevel):
+            break
+    return ([],path,0)
+
 def path_length(graph, node_names):
     length=0
     for i in range(len(node_names)-1):
