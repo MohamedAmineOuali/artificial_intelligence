@@ -97,17 +97,20 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         # Action definition
-        self.openBt.triggered.connect(self.getfile)
+        self.openBt.triggered.connect(self.getFile)
+        self.saveBt.triggered.connect(self.saveFile)
         self.myAction = MyAppAction(self.algoSelect, self.delaySelect, self.startSelect, self.endSelect,
-                               self.textarea, self.playbt, self.stopbt, self.pausebt, self.graphicsView,
-                               self.saveBt)
+                               self.textarea, self.playbt, self.stopbt, self.pausebt, self.graphicsView)
 
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-    def getfile(self):
+    def getFile(self):
         fname = QFileDialog.getOpenFileName(self.widget, 'Open file','', "Text files (*.txt);;XML files (*.xml)")
-        print('fname',fname)
         self.myAction.createGraph(fname)
+
+    def saveFile(self):
+        fname = QFileDialog.getSaveFileName(self.widget, 'Save file','', "Text files (*.txt)")
+        self.myAction.saveTrace(fname)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
