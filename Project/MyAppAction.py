@@ -147,10 +147,13 @@ class MyAppAction:
         self.result=False
         self.graph.display()
         self.textarea.setText(self.graph.__str__())
+        self.disable_enable(True)
+
 
     def play(self):
         self.result=False
-        self.textarea.setText(self.textarea.toPlainText()+"\n"+MyAppAction.algo[self.algoSelect.currentIndex()])
+        self.disable_enable(False)
+        self.textarea.setText(self.textarea.toPlainText()+"\n"+MyAppAction.algo[self.algoSelect.currentIndex()]+":")
         self.graph.init()
         self.curAlgo = MyAppAction.algorithms[self.algoSelect.currentIndex()]
         a = self.startSelect.currentIndex()
@@ -161,6 +164,12 @@ class MyAppAction:
         self.t = MyThread(self.display_result,self.curAlgo, self.graph, self.startNode, self.goleNode)
         self.t.start()
 
+    def disable_enable(self,state):
+        self.playbt.setEnabled(state)
+        self.algoSelect.setEnabled(state)
+        self.startSelect.setEnabled(state)
+        self.endSelect.setEnabled(state)
+        self.delaySelect.setEnabled(state)
 
 
 
