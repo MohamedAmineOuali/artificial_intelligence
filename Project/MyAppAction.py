@@ -125,10 +125,10 @@ class MyAppAction:
         self.endSelect.setCurrentIndex(0)
         self.startSelect.setCurrentIndex(0)
         self.graph.display()
-        self.textarea.setText("open success...")
+        self.textarea.setText(self.graph.__str__())
 
     def display_result(self,text):
-        self.textarea.setText(text)
+        self.textarea.setText(self.textarea.toPlainText()+"\n"+text)
         self.result=True
 
     def saveTrace(self,name):
@@ -145,11 +145,12 @@ class MyAppAction:
     def stop(self):
         self.t.killf()
         self.result=False
-        self.textarea.setText("Stop process")
+        self.graph.display()
+        self.textarea.setText(self.graph.__str__())
 
     def play(self):
         self.result=False
-        self.textarea.setText("waiting...")
+        self.textarea.setText(self.textarea.toPlainText()+"\n"+MyAppAction.algo[self.algoSelect.currentIndex()])
         self.graph.init()
         self.curAlgo = MyAppAction.algorithms[self.algoSelect.currentIndex()]
         a = self.startSelect.currentIndex()
