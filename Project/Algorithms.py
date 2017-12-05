@@ -15,7 +15,7 @@ def bfs(graph, start, goal):
             return (cur,path,path_length(graph,cur))
         queue.pop(0)
         for a in graph.get_connected_nodes(last):
-            if a not in cur:
+            if a not in visited:
                 queue.append(cur + [a])
         visited.add(last)
     return ([],path,0)
@@ -33,7 +33,7 @@ def dfs(graph, start, goal):
         if (last == goal):
             return (cur,path,path_length(graph,cur))
         for a in graph.get_connected_nodes(last):
-            if (a not in cur):
+            if (a not in visited):
                 stack.append(cur + [a])
         visited.add(last)
     return ([],path,0)
@@ -52,7 +52,7 @@ def uniform_cost(graph, start, goal):
         if (last == goal):
             return (cur[1],path,path_length(graph,cur[1]))
         for a in graph.get_connected_nodes(last):
-            if (a not in cur[1]):
+            if (a not in visited):
                 heappush(heap, (cur[0] + graph.get_edge(last, a).length, cur[1] + [a], a))
         visited.add(last)
     return ([],path,0)
