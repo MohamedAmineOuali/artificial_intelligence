@@ -53,7 +53,6 @@ class DataFromFile:
             if(foundit):
                 self.heurisiticdata = ast.literal_eval(heuristic)
 
-
         return (self.edgesdata,self.heurisiticdata)
 
     ''' 
