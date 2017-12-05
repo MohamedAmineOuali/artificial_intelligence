@@ -139,10 +139,11 @@ class Graph(IGraph):
         '''create an empty graph'''
         self.display_image = display
         self.g = graphviz.Digraph(filename="test",format="png")
+        self.g.attr(size='10')
+        self.g.attr(rankdir='LR')
         for v in self.nodes:
             self.g.node(v)
-        for edge in self.edges:
-            self.g.edge(edge.node1, edge.node2,label=str(edge.length))
+
 
     '''
     display the heuristic on the graph, you need just to specify the goal node

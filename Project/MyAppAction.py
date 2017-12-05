@@ -44,7 +44,10 @@ class MyThread(QThread):
                     return
             except StopIteration as ex:
                 time=timeit.default_timer() - start_time
-                text="Path: " + ex.value[0].__str__() +"\nSolution path: " + ex.value[1].__str__() +"\nPath legth: " + str(ex.value[2])+"\nexecution time: "+str(time)
+                if(len(ex.value[0])==0):
+                    text="But non atteint "+"\nPath: " + ex.value[1].__str__() +"\nexecution time: "+str(time)
+                else:
+                    text="Solution path: " + ex.value[0].__str__() +"\nPath: " + ex.value[1].__str__() +"\nPath legth: " + str(ex.value[2])+"\nexecution time: "+str(time)
                 self.displayFun.emit(text)
                 return
 
@@ -65,7 +68,9 @@ class MyAppAction:
         self.algoSelect = algoSelect
         self.delaySelect = delaySelect
         self.startSelect = startSelect
+        self.startSelect.setSizeAdjustPolicy(QComboBox.AdjustToContents)
         self.endSelect = endSelect
+        self.endSelect.setSizeAdjustPolicy(QComboBox.AdjustToContents)
         self.textarea = textarea
         self.playbt = playbt
         self.stopbt = stopbt
@@ -104,8 +109,8 @@ class MyAppAction:
         if("xml" in name[1]):
             (edgesdata, heurisiticdata) = d.getDataFromFileXML(name[0])
 
-        self.graph = Graph(display=self.display_image, edgesdict= edgesdata["edgesdict"],
-                           heuristic= heurisiticdata["heurisiticdict"][0])
+        self.graph = Graph(display=self.display_image, edgesdict= edgesdata,
+                           heuristic= heurisiticdata)
         def cmp_to_key():
             'Convert a cmp= function into a key= function'
 
@@ -114,12 +119,17 @@ class MyAppAction:
                     self.obj = obj
 
                 def __lt__(self, other):
-                    return int(self.obj) < int(other.obj)
+                    try:
+                        return int(self.obj) < int(other.obj)
+                    except ValueError:
+                        return self.obj<other.obj
+
 
             return K
 
         self.graph.nodes.sort(key=cmp_to_key())
-
+        self.startSelect.clear()
+        self.endSelect.clear()
         self.startSelect.addItems(self.graph.nodes)
         self.endSelect.addItems(self.graph.nodes)
         self.endSelect.setCurrentIndex(0)

@@ -2,7 +2,7 @@ NAME = "NAME"
 NODE1 = "NODE1"
 NODE2 = "NODE2"
 VAL = "LENGTH"
-
+import ast
 class Node:
     def __init__(self, NAME, NODE1, NODE2, VAL,*args):
         self.NAME=NAME
@@ -14,8 +14,8 @@ class DataFromFile:
 
     '''the data to be read from the file is the edges dictionary and the heuristic dictionary'''
     def __init__(self):
-        self.edgesdata = {"edgesdict": []}
-        self.heurisiticdata = {"heurisiticdict": []}
+        self.edgesdata = []
+        self.heurisiticdata = []
 
     ''' 
     read the data from a text file : structure of the file should be:
@@ -32,7 +32,7 @@ class DataFromFile:
         self.filename = filename
         with open(self.filename,'r') as file:
             foundit = False
-
+            heuristic=''
             for line in file:
                 #skip the line that indicates it is the start of the edges dictionary
                 if "edgesdict" in line:
@@ -44,37 +44,18 @@ class DataFromFile:
                     continue
                 #get the edges dictinary
                 if (foundit == False) :
-                    edgesdict = {}
-                    line = ' '.join(line.replace("\"","\'").replace('{', "").replace('},', "").split())
-                    params = line.replace('\'','').split(",")
-                    name = params[0].split(": ")[1]
-                    val = params[1].replace('\'','').split(": ")[1]
-                    node1 = params[2].split(": ")[1]
-                    node2 = params[3].split(": ")[1]
-                    edgesdict[NAME] = name
-                    edgesdict[VAL] = int(val)
-                    edgesdict[NODE1] = node1
-                    edgesdict[NODE2] = node2
-                    self.edgesdata["edgesdict"].append(edgesdict)
+                    edgesdict=ast.literal_eval(line )
+                    self.edgesdata.append(edgesdict)
                 #get the heuristic dictionary
                 else :
-                    arguments = {}
-                    line = ' '.join(line.replace("\"","\'").replace(' ', "").replace("},","}").split())
-                    line = line.split(":{")
-                    #endPoint indicates that this heuristic only works if the endPoint of the algo is that and that the start is 1
-                    endPoint = line[0].replace("{","").replace("'","")
-                    arguments = line[1].replace("}","").split(",")
-                    heurisitics = {}
-                    if(len(arguments)>0 and arguments[0]!=""):
-                        for argument in arguments:
-                            argument=argument.split(":")
-                            #the heurisitic of each node must be an int
-                            heurisitics[argument[0].replace("'","")] = int(argument[1])
-                    heuristicdict={}
-                    heuristicdict[endPoint] = heurisitics
-                    self.heurisiticdata["heurisiticdict"].append(heuristicdict)
-        print(self.edgesdata,self.heurisiticdata)
+                    heuristic+=line
+
+            if(foundit):
+                self.heurisiticdata = ast.literal_eval(heuristic)
+
+
         return (self.edgesdata,self.heurisiticdata)
+
     ''' 
     read the data from a xml file : structure of the file should be:
         _______________________________________________________
@@ -108,7 +89,7 @@ class DataFromFile:
                             for i in param:
                                 heurisitics[i.attrib["node"]] = int(i.attrib["value"])
                             heuristicdict[endPoint] = heurisitics
-                self.heurisiticdata["heurisiticdict"].append(heuristicdict)
+                self.heurisiticdata=heuristicdict
             if(child.tag=="edgesdict"):
                 edgesdict = {}
                 for edge in child:
@@ -117,10 +98,6 @@ class DataFromFile:
                     edges[VAL] = int(edge.attrib['val'])
                     edges[NODE1] = edge.attrib['node1']
                     edges[NODE2] = edge.attrib['node2']
-                    self.edgesdata["edgesdict"].append(edges)
-        print(self.heurisiticdata["heurisiticdict"][0])
-        print(self.edgesdata["edgesdict"])
-        return (self.edgesdata,self.heurisiticdata)
+                    self.edgesdata.append(edges)
 
-d = DataFromFile()
-d.getDataFromFileXML("./DATA/data.xml")
+        return (self.edgesdata,self.heurisiticdata)

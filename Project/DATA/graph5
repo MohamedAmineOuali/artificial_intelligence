@@ -1,8 +1,0 @@
-edgesdict=
-{NAME: 'e1', VAL:  1, NODE1:'S', NODE2:'A' },
-{NAME: 'e2', VAL:  1, NODE1:'G', NODE2:'C' },
-{NAME: 'e3', VAL:100, NODE1:'B', NODE2:'C' },
-{NAME: 'e4', VAL: 10, NODE1:'S', NODE2:'B' },
-{NAME: 'e5', VAL: 10, NODE1:'C', NODE2:'A' }
-heuristic=
-{"G":{"S":10,"A":1000,"B":5,"C":5}}

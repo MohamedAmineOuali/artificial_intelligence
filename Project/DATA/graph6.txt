@@ -1,0 +1,6 @@
+edgesdict=
+{'NAME': 'SA', 'LENGTH': 1, 'NODE1': 'S', 'NODE2': 'A'}
+{'NAME': 'SQ', 'LENGTH': 1, 'NODE1': 'S', 'NODE2': 'Q'}
+{'NAME': 'AG', 'LENGTH': 1, 'NODE1': 'A', 'NODE2': 'G'}
+{'NAME': 'QG', 'LENGTH': 1, 'NODE1': 'Q', 'NODE2': 'G'}
+{'NAME': 'SG', 'LENGTH': 1, 'NODE1': 'S', 'NODE2': 'G'}

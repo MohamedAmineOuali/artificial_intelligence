@@ -1,0 +1,14 @@
+edgesdict=
+{'NAME': 'e1',  'LENGTH': 10, 'NODE1': 'S', 'NODE2': 'A' }
+{'NAME': 'e2',  'LENGTH': 4, 'NODE1': 'S', 'NODE2': 'B' }
+{'NAME': 'e3',  'LENGTH': 9, 'NODE1': 'A', 'NODE2': 'C' }
+{'NAME': 'e4',  'LENGTH': 8, 'NODE1': 'B', 'NODE2': 'C' }
+{'NAME': 'e5',  'LENGTH': 7, 'NODE1': 'C', 'NODE2': 'D' }
+{'NAME': 'e6',  'LENGTH': 9, 'NODE1': 'C', 'NODE2': 'E' }
+{'NAME': 'e7',  'LENGTH': 7, 'NODE1': 'D', 'NODE2': 'E' }
+{'NAME': 'e8',  'LENGTH': 13, 'NODE1': 'D', 'NODE2': 'F' }
+{'NAME': 'e9',  'LENGTH': 8, 'NODE1': 'E', 'NODE2': 'F' }
+{'NAME': 'e10', 'LENGTH': 5, 'NODE1': 'E', 'NODE2': 'G' }
+{'NAME': 'e11', 'LENGTH': 10, 'NODE1': 'F', 'NODE2': 'G' }
+heuristic=
+{'G':{'S':25, 'A':20, 'B':22, 'C':15, 'D':8, 'E':3, 'F':9}}
