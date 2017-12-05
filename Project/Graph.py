@@ -143,6 +143,8 @@ class Graph(IGraph):
         self.g.attr(rankdir='LR')
         for v in self.nodes:
             self.g.node(v)
+        for edge in self.edges:
+            self.g.edge(edge.node1, edge.node2,label=str(edge.length))
 
 
     '''
