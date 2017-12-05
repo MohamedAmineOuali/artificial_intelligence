@@ -45,7 +45,7 @@ class DataFromFile:
                 #get the edges dictinary
                 if (foundit == False) :
                     edgesdict = {}
-                    line = ' '.join(line.replace('{', "").replace('},', "").split())
+                    line = ' '.join(line.replace("\"","\'").replace('{', "").replace('},', "").split())
                     params = line.replace('\'','').split(",")
                     name = params[0].split(": ")[1]
                     val = params[1].replace('\'','').split(": ")[1]
@@ -58,21 +58,23 @@ class DataFromFile:
                     self.edgesdata["edgesdict"].append(edgesdict)
                 #get the heuristic dictionary
                 else :
-                    line = ' '.join(line.replace(' ', "").split())
+                    arguments = {}
+                    line = ' '.join(line.replace("\"","\'").replace(' ', "").replace("},","}").split())
                     line = line.split(":{")
                     #endPoint indicates that this heuristic only works if the endPoint of the algo is that and that the start is 1
                     endPoint = line[0].replace("{","").replace("'","")
                     arguments = line[1].replace("}","").split(",")
                     heurisitics = {}
-                    for argument in arguments:
-                        argument=argument.split(":")
-                        #the heurisitic of each node must be an int
-                        heurisitics[argument[0].replace("'","")] = int(argument[1])
+                    if(len(arguments)>0 and arguments[0]!=""):
+                        for argument in arguments:
+                            argument=argument.split(":")
+                            #the heurisitic of each node must be an int
+                            heurisitics[argument[0].replace("'","")] = int(argument[1])
                     heuristicdict={}
                     heuristicdict[endPoint] = heurisitics
                     self.heurisiticdata["heurisiticdict"].append(heuristicdict)
+        print(self.edgesdata,self.heurisiticdata)
         return (self.edgesdata,self.heurisiticdata)
-
     ''' 
     read the data from a xml file : structure of the file should be:
         _______________________________________________________
@@ -120,3 +122,6 @@ class DataFromFile:
         print(self.heurisiticdata["heurisiticdict"][0])
         print(self.edgesdata["edgesdict"])
         return (self.edgesdata,self.heurisiticdata)
+
+d = DataFromFile()
+d.getDataFromFileTXT("./DATA/graph8")
