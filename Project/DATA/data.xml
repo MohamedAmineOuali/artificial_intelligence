@@ -20,7 +20,7 @@
     </edgesdict>
     <heuristic>
         <params>
-            <endPoint node="14"></endPoint>
+            <endPoint node="14">
             <param node="4" value="17"></param>
             <param node="5" value="10"></param>
             <param node="3" value="7"></param>
@@ -35,6 +35,23 @@
             <param node="13" value="12"></param>
             <param node="11" value="1000"></param>
             <param node="12" value="6"></param>
+            </endPoint>
+             <endPoint node="13">
+            <param node="4" value="17"></param>
+            <param node="5" value="10"></param>
+            <param node="3" value="7"></param>
+            <param node="6" value="13"></param>
+            <param node="14" value="15"></param>
+            <param node="9" value="14"></param>
+            <param node="8" value="8"></param>
+            <param node="10" value="6"></param>
+            <param node="2" value="4"></param>
+            <param node="7" value="6"></param>
+            <param node="1" value="0"></param>
+            <param node="13" value="12"></param>
+            <param node="11" value="1000"></param>
+            <param node="12" value="6"></param>
+            </endPoint>
         </params>
     </heuristic>
 </graph>

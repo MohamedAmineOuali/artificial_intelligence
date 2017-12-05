@@ -99,16 +99,15 @@ class DataFromFile:
         for child in root:
             if(child.tag == "heuristic"):
                 heurisitics = {}
+                heuristicdict = {}
                 foundit = True
                 if(foundit):
                     for params in child:
                         for param in params:
-                            if(param.tag=="endPoint"):
-                                endPoint=param.attrib["node"]
-                            else:
-                                heurisitics[param.attrib["node"]] = int(param.attrib["value"])
-                heuristicdict = {}
-                heuristicdict[endPoint] = heurisitics
+                            endPoint = param.attrib["node"]
+                            for i in param:
+                                heurisitics[i.attrib["node"]] = int(i.attrib["value"])
+                            heuristicdict[endPoint] = heurisitics
                 self.heurisiticdata["heurisiticdict"].append(heuristicdict)
             if(child.tag=="edgesdict"):
                 edgesdict = {}
@@ -124,4 +123,4 @@ class DataFromFile:
         return (self.edgesdata,self.heurisiticdata)
 
 d = DataFromFile()
-d.getDataFromFileTXT("./DATA/graph8")
+d.getDataFromFileXML("./DATA/data.xml")
