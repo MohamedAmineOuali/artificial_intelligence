@@ -22,12 +22,12 @@ class Display:
 
     def mgu(self, exp1, exp2):
         d = unifier(exp1, exp2)
-        print(d)
+        # print(d)
         if d is None or len(d)==0:
             print('\x1b[6;31;20m'+"Unification impossible!"+'\x1b[0m', '\n')
             return
 
-        for key, value in d.items():
+        for key, value in d:
 
             if ']' in str(value):
                 print('(', key, '/ ', end='')
@@ -38,6 +38,7 @@ class Display:
                 print('(', key, '/', value, ')', end='')
 
         print('\n')
+        return d
 
 
 
@@ -52,6 +53,8 @@ expr2=input('\x1b[26;34;20m' + "Type the second expression : " + '\x1b[0m')
 e1=Expression(expr1)
 e2=Expression(expr2)
 
-Display().mgu(e1,e2)
+result=Display().mgu(e1,e2)
 
 
+f = open("traeUnification.log",'w')
+f.write(str(result))
